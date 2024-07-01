@@ -1,35 +1,52 @@
-const readline = require("readline-sync");
+const leia = require('readline-sync');
 
-function codigoProduto(codigo) {
-  switch (codigo) {
+console.log('\n****Bem-vindes a lanchonete da Clara Araujo!****\n');
+console.log('////////////////////////Cardapio////////////////////////');
+console.log(' Código do Produto | Produto         |  Preço Unitário  ');
+console.log('     1             | Cachorro Quente |   R$ 10.00       ');
+console.log('     2             | X-Salada        |   R$ 15.00       ');
+console.log('     3             | X-Bacon         |   R$ 18.00       ');
+console.log('     4             | Bauru           |   R$ 12.00       ');
+console.log('     5             | Refrigerante    |   R$ 8.00        ');
+console.log('     6             | Suco de laranja |   R$ 13.00       ');
+console.log('////////////////////////////////////////////////////////');
+
+let codigo = leia.questionInt('\nDigite o codigo do produto: ',{limitMessage: 'Apenas numeros inteiros!'});
+let quantidade =  leia.questionInt('Digite a quantidade: ',{limitMessage: 'Apenas numeros inteiros!'});
+
+
+let preco;
+
+
+switch(codigo){
     case 1:
-      return { produto: "Cachorro Quente", preco: 10.0 };
+        preco = 10.00;
+        console.log = ('\nProduto: Cachorro Quente');
+        break
     case 2:
-      return { produto: "X-Salada", preco: 15.0 };
+        preco = 15.00
+        console.log('\nProduto: X-Salada');
+        break
     case 3:
-      return { produto: "X-Bacon", preco: 18.0 };
+        preco = 18.00
+        console.log('\nProduto: X-Bacon');
+        break
     case 4:
-      return { produto: "Bauru", preco: 12.0 };
+        preco = 12.00
+        console.log('\nProduto: Bauru');
+        break
     case 5:
-      return { produto: "Refrigerante", preco: 8.0 };
+        preco = 8.00
+        console.log('\nProduto: Refrigerante');
+        break
     case 6:
-      return { produto: "Suco de laranja", preco: 13.0 };
+        preco = 13.00
+        console.log('\nProduto: Suco de Laranja');
+        break
     default:
-      return null;
-  }
+        console.log('Esse código não existe!')  ;      
 }
 
-const codigo = parseInt(readline.question("Código do Produto: "));
+let valorTotal = preco*quantidade
 
-const produtoInfo = codigoProduto(codigo);
-
-if (produtoInfo) {
-  const quantidade = parseInt(readline.question("Quantidade: "));
-
-  const valorTotal = produtoInfo.preco * quantidade;
-
-  console.log(`Produto: ${produtoInfo.produto}`);
-  console.log(`Valor total: R$ ${valorTotal.toFixed(2)}`);
-} else {
-  console.log("Código de produto inválido. Por favor, digite um código entre 1 e 6.");
-}
+console.log(`\nValor total: R$${valorTotal.toFixed(2)}`);
